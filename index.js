@@ -1,4 +1,4 @@
-console.log("Hello world!")
+//console.log("Hello world!")
 
 var figlet = require("figlet");
 
