@@ -1,5 +1,13 @@
 const express = require('express')
+//cors허용
+var cors = require('cors')
 const app = express()
+
+//cors 적용시킬 포트 
+const port = 3000
+//cors사용하겠다!
+app.use(cors())
+
 
 app.get('/', function (req, res) {
   res.send('Hello World')
@@ -20,6 +28,9 @@ app.get('/dog', function (req, res) {
   res.json({'sound': '멍멍'})
 })
 
+app.get('/cat', function (req, res) {
+  res.json({'sound': '야옹'})
+})
 
 //사운드 구별
 app.get('/sound/:name', function (req, res) {

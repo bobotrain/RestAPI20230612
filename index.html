@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORS확인페이지</title>
+</head>
+<body>
+    <h1 id="sound"></h1>
+    <!--name값 입력 input-->
+    <input id="name" type="text">
+    <button onclick="getSound()">API 요청</button>
+    <script>
+        //input받은 값을 getSound에 보냄
+        function getSound() {
+            // 받은 input값 다시 변수 name에 담음
+            const name = document.getElementById('name').value
+
+            //만든 api의 name파라미터로 쏴주겠다.
+            fetch(`http://localhost:3000/${name}`)
+
+            //json방식으로 받음
+            .then((response) => response.json())
+
+            //받아온 데이터를 어떻게 가공할 것이냐
+            .then((data) => {
+                //console에 sound로 출력한다.
+                console.log(data.sound);
+                //sound를 받아와서 위 h1에 적어둔 id=sound 위치에  innerhtml에 넣어준다
+                document.getElementById('sound').innerHTML = data.sound
+            });
+    }
+    </script>
+    
+</body>
+</html>
